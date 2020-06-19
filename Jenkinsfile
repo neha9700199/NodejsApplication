@@ -3,9 +3,6 @@ pipeline{
     environment{
           PROJECT='mynodejs-app'
     }
-    triggers{
-        pollSCM 'H/5 * * * *'
-    }
     stages{
         stage('Get the Code'){
             steps{
