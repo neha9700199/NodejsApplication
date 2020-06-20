@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment{
-          PROJECT='mynodejs-app'
+          PROJECT='${env.BRANCH_NAME}'
     }
     triggers{
         pollSCM ''
