@@ -4,7 +4,7 @@ pipeline{
           PROJECT='mynodejs-app'
     }
     triggers{
-        pollSCM ''
+        pollSCM 'H/5 * * * *'
 }
     stages{
         stage('Get the Code'){
