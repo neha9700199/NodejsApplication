@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment{
-          PROJECT='${BRANCH_NAME}'
+          PROJECT="${env.JOB_NAME}"
     }
     triggers{
         pollSCM ''
