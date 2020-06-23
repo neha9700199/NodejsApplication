@@ -1,5 +1,9 @@
 pipeline{
-    agent any
+    agent {
+    node {
+        label 'jenkins-slave'
+    }
+}
     environment{
           PROJECT='mynodejs-app'
     }
