@@ -12,6 +12,7 @@ pipeline{
     stages{
         stage('Get the Code'){
             steps{
+                echo "${PROJECT}"
                 echo "checking out the code"
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[credentialsId: 'githubLogin', url: 'https://github.com/neha9700199/NodejsApplication']]])
                     }
@@ -40,6 +41,7 @@ pipeline{
                     VERSION = shortCommitHash
                     currentBuild.displayName = "${BUILD_ID}"
                     IMAGE = "$PROJECT:$VERSION"
+                    
                 }
             }
         }
