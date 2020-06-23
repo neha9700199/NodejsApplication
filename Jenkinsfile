@@ -4,7 +4,7 @@ pipeline{
 }
 
     environment{
-          PROJECT='nodejs-app'
+          PROJECT = """${sh(returnStdout: true, script: "echo ${JOB_NAME} | tr [:upper:] [:lower:] | sed 's,/,-,g'")}"""
     }
     triggers{
         pollSCM ''
