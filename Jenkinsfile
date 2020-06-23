@@ -4,7 +4,7 @@ pipeline{
 
     }
     environment{
-          PROJECT = """${sh(returnStdout: true, script: "echo ${BRANCH_NAME} | tr [:upper:] [:lower:] | sed 's,/,-,g'")}"""
+          PROJECT = 'nodejs-branch1'
     }
     triggers{
         pollSCM 'H/5 * * * *'
