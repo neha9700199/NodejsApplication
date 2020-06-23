@@ -4,7 +4,7 @@ pipeline{
 
     }
     environment{
-          PROJECT = """${sh(returnStdout: true, script: "echo ${JOB_NAME} | tr [:upper:] [:lower:]")}"""
+          PROJECT = """${sh(returnStdout: true, script: "echo ${JOB_NAME} | tr [:upper:] [:lower:] | sed 's,/,-,g'")}"""
     }
     triggers{
         pollSCM 'H/5 * * * *'
