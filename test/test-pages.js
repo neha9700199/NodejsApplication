@@ -3,7 +3,7 @@ var request = require('request');
 
 it('Main page content', function(done) {
     request('http://localhost:8000' , function(error, response, body) {
-        expect(body).to.equal('Hello World!');
+        expect(body).to.equal('i am Nodejs-branch1');
         done();
     });
 });
