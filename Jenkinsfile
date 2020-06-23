@@ -58,7 +58,7 @@ pipeline{
                      }
                      steps{
                          script{
-                        docker.build("$PROJECT:${BUILD_NUMBER}-`date +%Y-%m-%d`",".")
+                        docker.build("${PROJECT}:${BUILD_NUMBER}-`date +%Y-%m-%d`")
                      }
                      }
                  }
