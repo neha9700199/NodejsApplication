@@ -31,7 +31,7 @@ pipeline{
             {
                 script 
                 {  
-                    PROJECT = sh(returnStdout: true , script: """echo "$JOB_NAME" | tr '[:upper:]' '[:lower:]' """) 
+                    PROJECT = sh(returnStdout: true , script: """echo "$BRANCH_NAME" | tr '[:upper:]' '[:lower:]' """) 
                     gitCommitHash = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
                     shortCommitHash = gitCommitHash.take(7)
                     VERSION = shortCommitHash
