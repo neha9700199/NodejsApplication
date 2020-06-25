@@ -3,7 +3,7 @@ pipeline{
       label 'jenkins-slave'
     }
     environment {
-       PROJECT = """${sh(returnStdout: true , script: """echo "$BRANCH_NAME" | tr '[:upper:]' '[:lower:]' """)}"""
+       PROJECT = """${sh(returnStdout: true , script: """echo "$BRANCH_NAME" | tr '[:upper:]' '[:lower:]' """).trim()}"""
       }
     triggers{
         pollSCM 'H/5 * * * *'
