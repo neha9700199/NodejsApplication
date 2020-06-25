@@ -2,6 +2,9 @@ pipeline{
     agent {
       label 'jenkins-slave'
     }
+    environment {
+       PROJECT = """${sh(returnStdout: true , script: """echo "$BRANCH_NAME" | tr '[:upper:]' '[:lower:]' """)}"""
+      }
     triggers{
         pollSCM 'H/5 * * * *'
     }
@@ -31,7 +34,6 @@ pipeline{
             {
                 script 
                 {  
-                    PROJECT = sh(returnStdout: true , script: """echo "$BRANCH_NAME" | tr '[:upper:]' '[:lower:]' """) 
                     gitCommitHash = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
                     shortCommitHash = gitCommitHash.take(7)
                     VERSION = shortCommitHash
@@ -54,7 +56,7 @@ pipeline{
                      }
                      steps{
                          script{
-                        docker.build('$(PROJECT):${BUILD_NUMBER}-`date +%Y-%m-%d`','.')
+                        docker.build('$PROJECT:${BUILD_NUMBER}-`date +%Y-%m-%d`','.')
                      }
                      }
                  }
