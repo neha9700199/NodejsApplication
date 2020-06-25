@@ -1,10 +1,6 @@
 pipeline{
     agent {
       label 'jenkins-slave'
-
-    }
-    environment{
-          PROJECT = 'nodejs-branch1'
     }
     triggers{
         pollSCM 'H/5 * * * *'
@@ -35,7 +31,8 @@ pipeline{
             steps
             {
                 script 
-                {
+                {  
+                    PROJECT = sh(returnStdout: true , script: """echo "$JOB_NAME" | tr '[:upper:]' '[:lower:]' """) 
                     gitCommitHash = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
                     shortCommitHash = gitCommitHash.take(7)
                     VERSION = shortCommitHash
