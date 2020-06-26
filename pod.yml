@@ -1,4 +1,3 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -20,6 +19,14 @@ spec:
     spec:
       containers:
       - name: nodejs
-        image: 049483755852.dkr.ecr.ap-south-1.amazonaws.com/mynodejs-app:REPLACE_ME
+        image: 049483755852.dkr.ecr.ap-south-1.amazonaws.com/REPLACE_ME
+        resources:
+          limits:
+            cpu: "100m"
+            memory: "200Mi"
+          requests:
+            cpu: "100m"
+            memory: "200Mi"
         ports:
         - containerPort: 8000
+
