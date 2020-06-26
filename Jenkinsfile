@@ -1,10 +1,10 @@
-pipeline{
+pipeline {
     agent {
           label 'jenkins-slave'
 }
 
     environment{
-          PROJECT = """${sh(returnStdout: true, script: "echo ${JOB_NAME} | tr [:upper:] [:lower:] | sed 's,/,-,g'")}"""
+          PROJECT = """${sh(returnStdout: true , script: """echo "$BRANCH_NAME" | tr '[:upper:]' '[:lower:]' """).trim()}"""
     }
     triggers{
         pollSCM ''
@@ -57,7 +57,7 @@ pipeline{
                      }
                      steps{
                          script{
-                        docker.build("$PROJECT:${BUILD_NUMBER}-`date +%Y-%m-%d`")
+                        docker.build('$PROJECT:${BUILD_NUMBER}-`date +%Y-%m-%d`','.')
                      }
                      }
                  }
@@ -76,7 +76,7 @@ pipeline{
                  stage('deploy the image'){
                      steps{
                          sshagent(['k8s-cluster-key']) {
-                             sh '''sed "s/REPLACE_ME/${BUILD_NUMBER}-`date +%Y-%m-%d`/g" pod.yml >> pod.yml'''
+                             sh '''sed "s/REPLACE_ME/${BUILD_NUMBER}-`date +%Y-%m-%d`/g" pod.yml > pod.yml'''
                              sh "scp -o StrictHostKeyChecking=no *.yml ubuntu@10.0.0.73:/home/ubuntu"
                             script{
                          sh "ssh ubuntu@10.0.0.73 kubectl apply -f . --kubeconfig admin.config"
