@@ -78,7 +78,7 @@ pipeline{
                              sh '''sed "s/REPLACE_ME/$PROJECT:${BUILD_NUMBER}-`date +%Y-%m-%d`/g" pod.yml >> new-pod.yml'''
                              sh "scp -o StrictHostKeyChecking=no *.yml ubuntu@10.0.0.73:/home/ubuntu"
                             script{
-                         sh "ssh ubuntu@10.0.0.73 rm -rf pod.yml"
+                         sh "ssh ubuntu@10.0.0.73 rm pod.yml"
                          sh "ssh ubuntu@10.0.0.73 kubectl apply -f . --kubeconfig admin.config"
                          }
                        }
