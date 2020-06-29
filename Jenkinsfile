@@ -75,8 +75,7 @@ pipeline{
                  stage('deploy the image'){
                      steps{
                          sshagent(['k8s-cluster-key']) {
-                             sh '''sed "s/REPLACE_ME/$PROJECT:${BUILD_NUMBER}-`date +%Y-%m-%d`/g" pod.yml >> new-pod.yml'''
-                             sh '''chown -R jenkins:jenkins new-pod.yml'''
+                             sh '''sed "s/REPLACE_ME/$PROJECT:${BUILD_NUMBER}-`date +%Y-%m-%d`/g" pod.yml >> pod.yml'''
                              sh "scp -o StrictHostKeyChecking=no *.yml ubuntu@10.0.0.73:/home/ubuntu"
                             script{
                          sh "ssh ubuntu@10.0.0.73 rm pod.yml"
