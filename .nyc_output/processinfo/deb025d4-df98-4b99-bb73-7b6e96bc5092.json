@@ -1,1 +1,0 @@
-{"parent":null,"pid":2137,"argv":["/usr/bin/node","/home/vagrant/myapp/node_modules/.bin/mocha"],"execArgv":[],"cwd":"/home/vagrant/myapp","time":1592120814073,"ppid":2126,"coverageFilename":"/home/vagrant/myapp/.nyc_output/deb025d4-df98-4b99-bb73-7b6e96bc5092.json","externalId":"","uuid":"deb025d4-df98-4b99-bb73-7b6e96bc5092","files":[]}
