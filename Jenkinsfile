@@ -44,6 +44,13 @@ pipeline {
                 }
             }
         }
+       stage('Load testing'){
+          steps {
+           sh '''artillery run -o report.json report.yaml'''
+           sh '''artillery report report.json'''
+
+         }
+      }
         stage('test the service'){
                  environment {
                  EXIT_STATUS = """${sh(returnStatus: true, script: 'npm test')}"""
