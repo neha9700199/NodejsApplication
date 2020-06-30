@@ -11,8 +11,8 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 3
-      maxUnavailable: 2
+      maxSurge: 2
+      maxUnavailable: 3
   template:
     metadata:
       labels:
@@ -22,4 +22,4 @@ spec:
       - name: nodejs
         image: 049483755852.dkr.ecr.ap-south-1.amazonaws.com/mynodejs-app:REPLACE_ME
         ports:
-        - containerPort: 8000
+        - containerPort: 3000

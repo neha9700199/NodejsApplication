@@ -8,6 +8,7 @@
     "latest-version": "^5.1.0"
   },
   "devDependencies": {
+    "artillery": "^1.6.0",
     "chai": "^4.2.0",
     "forever": "^3.0.0",
     "mocha": "^8.0.1",

@@ -7,7 +7,7 @@ app.get('/', function (req, res) {
   res.send('Hello World')
 })
 
-//Launch listening server on port 8000
-app.listen(8000, function () {
-  console.log('App listening on port 8000!')
+//Launch listening server on port 3000
+app.listen(3000, function () {
+  console.log('App listening on port 3000!')
 })
