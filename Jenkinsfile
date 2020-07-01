@@ -6,7 +6,7 @@ pipeline{
        PROJECT = """${sh(returnStdout: true , script: """echo "$BRANCH_NAME" | tr '[:upper:]' '[:lower:]' """).trim()}"""
       }
     triggers{
-        pollSCM 'H/5 * * * *'
+        pollSCM ''
     }
     stages{
         stage('Get the Code'){
