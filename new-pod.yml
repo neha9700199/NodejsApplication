@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: nodejs
-        image: 049483755852.dkr.ecr.ap-south-1.amazonaws.com/mynodejs-app:14-2020-06-23
+        image: 049483755852.dkr.ecr.ap-south-1.amazonaws.com/master:7-2020-06-26
         resources:
           limits:
             cpu: "100m"
