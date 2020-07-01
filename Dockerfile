@@ -9,6 +9,6 @@ WORKDIR /myapp
 COPY --from=base /myapp .
 COPY . .
 
-EXPOSE 8000
+EXPOSE 3000
 
 CMD node app.js
