@@ -106,7 +106,8 @@ pipeline {
                                       sh ''' aws s3 mb s3://$PROJECT-${BUILD_NUMBER}-`date +%Y-%m-%d` --region ap-south-1 || true
                                           aws s3 cp "coverage/" s3://$PROJECT-${BUILD_NUMBER}-`date +%Y-%m-%d` --region ap-south-1 --recursive
                                           aws s3 cp ".nyc_output/" s3://$PROJECT-${BUILD_NUMBER}-`date +%Y-%m-%d` --region ap-south-1 --recursive
-                                          aws s3api put-object-acl --bucket $PROJECT-${BUILD_NUMBER}-`date +%Y-%m-%d` --key index.html --acl public-read --region ap-south-1
+                                          aws s3 cp "report.json.html" s3://$PROJECT-${BUILD_NUMBER}-`date +%Y-%m-%d` --region ap-south-1 --recursive
+                                          aws s3api put-object-acl --bucket $PROJECT-${BUILD_NUMBER}-`date +%Y-%m-%d` --key report.json.html --acl public-read --region ap-south-1
                                       '''
                                                }
                         }
