@@ -22,8 +22,8 @@ pipeline {
                     curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
                     sudo apt-get install nodejs -y '''
                     sh '''npm ci'''
-                    sh '''npm install -g request'''
-                    sh '''npm install -g artillery@latest'''
+                    sh '''sudo npm install -g request'''
+                    sh '''sudo npm install -g artillery@latest'''
             }
         }
         stage('start the service'){
