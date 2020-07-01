@@ -23,7 +23,7 @@ pipeline {
                     sudo apt-get install nodejs -y '''
                     sh '''npm ci'''
                     sh '''sudo npm install -g request'''
-                    sh '''npm install -g artillery@lalest'''
+                    sh '''npm install -g artillery'''
             }
         }
         stage('start the service'){
