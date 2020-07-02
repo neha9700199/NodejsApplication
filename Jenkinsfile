@@ -85,7 +85,7 @@ pipeline {
                  stage('deploy the image'){
                      steps{
                          sshagent(['k8s-cluster-key']) {
-                             sh '''sed "s/REPLACE_ME/$PROJECT:${BUILD_NUMBER}-`date +%Y-%m-%d`/g" pod.yml'''
+                             sh '''sed "s/REPLACE_ME/$PROJECT:${BUILD_NUMBER}-`date +%Y-%m-%d`/g" pod.yml >> new-pod.yml'''
                              sh "scp -o StrictHostKeyChecking=no *.yml ubuntu@10.0.0.73:/home/ubuntu"
                             script{
                          sh "ssh ubuntu@10.0.0.73 kubectl apply -f . --kubeconfig admin.config"
@@ -106,7 +106,7 @@ pipeline {
                                       sh ''' aws s3 mb s3://$PROJECT-${BUILD_NUMBER}-`date +%Y-%m-%d` --region ap-south-1 || true
                                           aws s3 cp "coverage/" s3://$PROJECT-${BUILD_NUMBER}-`date +%Y-%m-%d` --region ap-south-1 --recursive
                                           aws s3 cp ".nyc_output/" s3://$PROJECT-${BUILD_NUMBER}-`date +%Y-%m-%d` --region ap-south-1 --recursive
-                                          aws s3 cp "report.json.html" s3://$PROJECT-${BUILD_NUMBER}-`date +%Y-%m-%d` --region ap-south-1 --recursive
+                                          aws s3 cp report.json.html s3://$PROJECT-${BUILD_NUMBER}-`date +%Y-%m-%d` --region ap-south-1 --recursive
                                           aws s3api put-object-acl --bucket $PROJECT-${BUILD_NUMBER}-`date +%Y-%m-%d` --key report.json.html --acl public-read --region ap-south-1
                                       '''
                                                }
