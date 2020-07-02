@@ -50,7 +50,7 @@ pipeline {
           steps {
            sh '''artillery run -o report.json report.yaml'''
            sh '''artillery report report.json'''
-
+           sh '''ls -ltra'''
          }
       }
         stage('test the service'){
