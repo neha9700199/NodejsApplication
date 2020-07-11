@@ -23,3 +23,8 @@ spec:
         image: nginx
         ports:
         - containerPort: 3000
+
+      imagePullSecrets:
+      - name: $KUBERNETES_SECRET_NAME
+
+
