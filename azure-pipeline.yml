@@ -34,9 +34,9 @@ stages:
             tags: |
               $(tag)
 
-  - stage: Build
+  - stage: check
     jobs:
-      - job: Build
+      - job: check
         pool:
           vmImage: 'ubuntu-latest'
         container:
