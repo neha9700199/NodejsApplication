@@ -29,7 +29,7 @@ stages:
           displayName: Build docker image
           inputs:
             repository: $(DOCKER_REPOSITORY)
-            command:
+            command: buildAndPush
             Dockerfile: Dockerfile
             tags: |
               $(tag)
