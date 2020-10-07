@@ -6,7 +6,7 @@ resources:
     - container: dockeragent
       image: "827063637024.dkr.ecr.us-east-1.amazonaws.com/docker-registry:35"
       endpoint: "aws_ecr"
-container: aws_ecr
+container: dockeragent
 steps:
 - script: |
     hostname
