@@ -1,54 +1,22 @@
-# Docker
-# Build a Docker image
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
-
 trigger:
   - master
 
-stages:
-  - stage: Build
-    jobs:
-      - job: Build
-        pool:
-          vmImage: 'ubuntu-latest'
+resources:
+  containers:
+    - container: dockeragent
+      image: "827063637024.dkr.ecr.us-east-1.amazonaws.com/docker-registry:35"
+      endpoint: "aws_ecr"
+container: aws_ecr
+steps:
+- script: |
+    hostname
+  displayName: container testing
+  env:
+    AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
+    AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
 
-        variables:
-          - group: dev
-          - name: DOCKER_REPOSITORY
-            value: $(AWS_ACCOUNT_ID).dkr.ecr.$(AWS_REGION).amazonaws.com/$(DOCKER_REPOSITORY_NAME)
-
-        steps:
-        - script: |
-            aws ecr get-login-password --region $(AWS_REGION) | docker login --username AWS --password-stdin $(AWS_ACCOUNT_ID).dkr.ecr.$(AWS_REGION).amazonaws.com
-          displayName: $(AWS_ACCOUNT_ID)
-          env:
-            AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
-            AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
-
-        - task: Docker@2
-          displayName: Build docker image
-          inputs:
-            repository: $(DOCKER_REPOSITORY)
-            command: buildAndPush
-            Dockerfile: Dockerfile
-            tags: |
-              $(tag)
-
-  - stage: check
-    jobs:
-      - job: check
-        pool:
-          vmImage: 'ubuntu-latest'
-        container:
-          image: $(AWS_ACCOUNT_ID).dkr.ecr.$(AWS_REGION).amazonaws.com/$(DOCKER_REPOSITORY_NAME):$(tag)
-          endpoint: aws_ecr
-        variables:
-          - group: dev
-          - name: DOCKER_REPOSITORY
-            value: $(AWS_ACCOUNT_ID).dkr.ecr.$(AWS_REGION).amazonaws.com/$(DOCKER_REPOSITORY_NAME)
-
-        steps:
-        - script: hostname
-          env:
-            AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
-            AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+- task: Docker@2
+  displayName: to know the ip ipaddress
+  inputs:
+    script: |
+      ipaddress
