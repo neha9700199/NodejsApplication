@@ -8,6 +8,9 @@ resources:
       endpoint: "aws_ecr"
 container: dockeragent
 steps:
+- task: ManualValidation@0
+  inputs:
+    notifyUsers: 'nehakumari971650@gmail.com'
 - script: |
     hostname
   displayName: container testing
@@ -15,8 +18,3 @@ steps:
     AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
     AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
 
-- task: Docker@2
-  displayName: to know the ip ipaddress
-  inputs:
-    script: |
-      ipaddress
