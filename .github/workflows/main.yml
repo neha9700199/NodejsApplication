@@ -32,7 +32,7 @@ jobs:
         with:
           inlineScript: |
             az --version
-              
+            az login -u AZURE_USERNAME -p AZURE_PASSWORD --allow-no-subscriptions
     # Specify the script here
         
     # Azure CLI version to be used to execute the script. If not provided, latest version is used
