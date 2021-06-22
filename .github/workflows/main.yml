@@ -18,7 +18,7 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
+    if: github.ref = 'main'
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -27,12 +27,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
-      - name: Azure CLI Action
-        uses: Azure/cli@1.0.4
-        with:
-          inlineScript: |
-            az --version
-            az login -u AZURE_USERNAME -p AZURE_PASSWORD --allow-no-subscriptions
+
     # Specify the script here
         
     # Azure CLI version to be used to execute the script. If not provided, latest version is used
