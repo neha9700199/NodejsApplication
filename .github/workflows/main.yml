@@ -71,14 +71,12 @@ jobs:
           azcliversion: 2.0.72
           inlineScript: 
             az extension add --name azure-devops
-            echo yv3jqc22e2navuukeyz7zwqjfz6isz3pmbfvlnqow3vl5zuv6oxq | az login --organization https://dev.azure.com/kumari8700neha
+            echo yv3jqc22e2navuukeyz7zwqjfz6isz3pmbfvlnqow3vl5zuv6oxq | az devops login --organization https://dev.azure.com/kumari8700neha
             az artifacts universal publish
                 --organization https://dev.azure.com/kumari8700neha/
-                --project="Demo_nodejs"
-                --scope project
-                --feed my-feed
+                --feed new-feed
                 --name my-first-package
                 --version 0.0.1
                 --description "Welcome to Universal Packages"
-                --path ./test
+                --path .
           # Azure CLI version to be used to execute the script. If not provided, latest version is used
