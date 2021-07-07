@@ -41,7 +41,7 @@ jobs:
         uses: dawidd6/action-download-artifact@v2
         with:
           # Optional, GitHub token
-          #github_token: ${{secrets.GITHUB_TOKEN}}
+          github_token: ${{secrets.GITHUB_TOKEN}}
           # Required, workflow file name or ID
           workflow: main.yml
           # Optional, will get head commit SHA
