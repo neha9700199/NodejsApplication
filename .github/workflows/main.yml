@@ -37,12 +37,9 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           echo $GITHUB_REF
-      - name: Download a single artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: my-artifact
-          path: ./
+      
       - name: run script
         run: |
+          echo ${{ github.event.workflow_run.workflow_id }}
           pwd
           ls -ltra
