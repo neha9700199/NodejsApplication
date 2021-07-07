@@ -40,6 +40,6 @@ jobs:
       
       - name: run script
         run: |
-          echo ${{ github.event.workflow_run.workflow_id }}
+          echo "${{ github.event.workflow_run.workflow_id }}"
           pwd
           ls -ltra
