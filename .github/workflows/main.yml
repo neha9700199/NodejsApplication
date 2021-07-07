@@ -64,7 +64,7 @@ jobs:
           pwd
           ls -ltra
       - name: Azure CLI Action
-        uses: Azure/cli@1.0.4
+        uses: Azure/cli@v1.0.0
         env:
           AZURE_DEVOPS_EXT_PAT: yv3jqc22e2navuukeyz7zwqjfz6isz3pmbfvlnqow3vl5zuv6oxq
         with:
