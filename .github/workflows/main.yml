@@ -66,7 +66,7 @@ jobs:
       - name: Azure CLI Action
         uses: Azure/cli@v1.0.0
         env:
-          AZURE_DEVOPS_EXT_PAT: 'tpd5mt6kks623mpugc2cwnqpdshdzl7k3zamim6mrg5cxgbzfbgq'
+          AZURE_DEVOPS_EXT_PAT: tpd5mt6kks623mpugc2cwnqpdshdzl7k3zamim6mrg5cxgbzfbgq
         with:
           inlineScript: |
             az extension add --name azure-devops
