@@ -73,7 +73,8 @@ jobs:
             az devops --help
             echo "kt53yidqochaupbsseakpkaj7cj3ufqug2afiunpgkzuqq3rnwoa" > my_pat_token.txt
             cat my_pat_token.txt
-             echo ${{ env.AZURE_DEVOPS_EXT_PAT }} | az devops login --organization https://dev.azure.com/kumari8700neha/
+            echo ${{ env.AZURE_DEVOPS_EXT_PAT }} | az devops login --organization https://dev.azure.com/kumari8700neha/
+            echo "login is success" 
             az artifacts universal publish
                 --organization https://dev.azure.com/kumari8700neha/
                 --feed new-feed
