@@ -70,7 +70,8 @@ jobs:
         with:
           inlineScript: 
             az extension add --name azure-devops
-            echo yv3jqc22e2navuukeyz7zwqjfz6isz3pmbfvlnqow3vl5zuv6oxq | az devops login --organization https://dev.azure.com/kumari8700neha
+            az extension add --name anextension
+            echo "yv3jqc22e2navuukeyz7zwqjfz6isz3pmbfvlnqow3vl5zuv6oxq" | az devops login --organization https://dev.azure.com/kumari8700neha
             az artifacts universal publish
                 --organization https://dev.azure.com/kumari8700neha/
                 --feed new-feed
