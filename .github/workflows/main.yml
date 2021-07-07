@@ -66,11 +66,11 @@ jobs:
       - name: Azure CLI Action
         uses: Azure/cli@v1.0.0
         env:
-          AZURE_DEVOPS_EXT_PAT: tpd5mt6kks623mpugc2cwnqpdshdzl7k3zamim6mrg5cxgbzfbgq
+          AZURE_DEVOPS_EXT_PAT: kt53yidqochaupbsseakpkaj7cj3ufqug2afiunpgkzuqq3rnwoa
         with:
           inlineScript: |
             az extension add --name azure-devops
-            echo "tpd5mt6kks623mpugc2cwnqpdshdzl7k3zamim6mrg5cxgbzfbgq" | az devops login --organization https://dev.azure.com/kumari8700neha
+            echo "kt53yidqochaupbsseakpkaj7cj3ufqug2afiunpgkzuqq3rnwoa" | az devops login --organization https://dev.azure.com/kumari8700neha
             az artifacts universal publish
                 --organization https://dev.azure.com/kumari8700neha/
                 --feed new-feed
