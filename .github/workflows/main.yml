@@ -58,7 +58,7 @@ jobs:
           # Optional, directory where to extract artifact
           path: ./
           # Optional, defaults to current repo
-          repo: food-site
+          repo: neha9700199/food-site 
       - name: run script
         run: |
           pwd
