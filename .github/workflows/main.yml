@@ -68,7 +68,7 @@ jobs:
         env:
           AZURE_DEVOPS_EXT_PAT: yv3jqc22e2navuukeyz7zwqjfz6isz3pmbfvlnqow3vl5zuv6oxq
         with:
-          inlineScript: 
+          inlineScript: |
             az config set extension.use_dynamic_install=yes_without_prompt
             az extension add --name azure-devops
             az extension add --name anextension
