@@ -22,6 +22,7 @@ jobs:
     strategy:
       matrix:
         git-repo: [spring-boot-dockerize-master, javaProject, food-site]
+        artifact-name: [springboot-a6e3bc, javaProject-1acfdf, foodsite-46e34a]
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -46,7 +47,7 @@ jobs:
           github_token: ${{secrets.GITHUB_TOKEN}}
           workflow: main.yml
           branch: master
-          name: my-artifact
+          name: ${{ matrix.artifact-name }}
           path: ./test
           repo: neha9700199/${{ matrix.git-repo }}
       - name: run script
