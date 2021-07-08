@@ -63,6 +63,14 @@ jobs:
         run: |
           pwd
           ls -ltra
+      - name: setup-python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      # Install Python depencies with pip
+      - name: pip-install-python-dependencies
+        run: python -m pip install --upgrade pip setuptools wheel pybump ruamel.yaml pyyaml shyaml
       - name: Azure CLI Action
         uses: Azure/cli@v1.0.0
         env:
