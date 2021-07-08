@@ -75,11 +75,5 @@ jobs:
             cat my_pat_token.txt
             echo ${{ env.AZURE_DEVOPS_EXT_PAT }} | az devops login --organization https://dev.azure.com/kumari8700neha/
             echo "login is success" 
-            az artifacts universal publish
-                --organization https://dev.azure.com/kumari8700neha/
-                --feed new-feed
-                --name my-first-package
-                --version 0.0.1
-                --description "Welcome to Universal Packages"
-                --path .
+            az artifacts universal publish --organization https://dev.azure.com/kumari8700neha/ --feed new-feed --name my-first-package --version 0.0.1 --description "Welcome to Universal Packages" --path ./test
           # Azure CLI version to be used to execute the script. If not provided, latest version is used
