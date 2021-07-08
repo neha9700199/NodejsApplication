@@ -70,7 +70,8 @@ jobs:
         with:
           inlineScript: |
             az extension add --name azure-devops
-            az devops --help
+            az extension show --name azure-devops
+            az devops configure --defaults organization=https://dev.azure.com/kumari8700neha
             echo "kt53yidqochaupbsseakpkaj7cj3ufqug2afiunpgkzuqq3rnwoa" > my_pat_token.txt
             cat my_pat_token.txt
             echo ${{ env.AZURE_DEVOPS_EXT_PAT }} | az devops login --organization https://dev.azure.com/kumari8700neha/
