@@ -19,6 +19,9 @@ jobs:
     # The type of runner that the job will run on
     if: ${{ github.ref == 'refs/heads/master' }}
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        git-repo: [spring-boot-dockerize-master, javaProject, food-site]
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -40,25 +43,12 @@ jobs:
       - name: Download artifact
         uses: dawidd6/action-download-artifact@v2
         with:
-          # Optional, GitHub token
           github_token: ${{secrets.GITHUB_TOKEN}}
-          # Required, workflow file name or ID
           workflow: main.yml
-          # Optional, will get head commit SHA
-         # pr: ${{github.event.pull_request.number}}
-          # Optional, no need to specify if PR is
-         # commit: 1b27f4116b24b536067d01086ec4aa79b79e459c
-          # Optional, will use the branch
           branch: master
-          # Optional, uploaded artifact name,
-          # will download all artifacts if not specified
-          # and extract them in respective subdirectories
-          # https://github.com/actions/download-artifact#download-all-artifacts
           name: my-artifact
-          # Optional, directory where to extract artifact
           path: ./test
-          # Optional, defaults to current repo
-          repo: neha9700199/food-site 
+          repo: neha9700199/${{ matrix.git-repo }}
       - name: run script
         run: |
           pwd
@@ -67,25 +57,7 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
-
-      # Install Python depencies with pip
+          
       - name: pip-install-python-dependencies
         run: python -m pip install --upgrade pip setuptools wheel pybump ruamel.yaml pyyaml shyaml keyring~=17.1.1
-      - name: Azure CLI Action
-        uses: Azure/cli@v1.0.0
-        env:
-          AZURE_DEVOPS_EXT_PAT: 'kt53yidqochaupbsseakpkaj7cj3ufqug2afiunpgkzuqq3rnwoa'
-        with:
-          inlineScript: |
-            pip --version
-            pip3 --version
-            pip install keyring~=17.1.1
-            az extension add --name azure-devops
-            az extension show --name azure-devops
-            az devops configure --defaults organization=https://dev.azure.com/kumari8700neha
-            echo "kt53yidqochaupbsseakpkaj7cj3ufqug2afiunpgkzuqq3rnwoa" > my_pat_token.txt
-            cat my_pat_token.txt
-            echo ${{ env.AZURE_DEVOPS_EXT_PAT }} | az devops login --organization https://dev.azure.com/kumari8700neha/
-            echo "login is success" 
-            az artifacts universal publish --organization https://dev.azure.com/kumari8700neha/ --feed new-feed --name my-first-package --version 0.0.2 --description "Welcome to Universal Packages" --path ./test
-          # Azure CLI version to be used to execute the script. If not provided, latest version is used
+      
