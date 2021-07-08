@@ -79,6 +79,7 @@ jobs:
           inlineScript: |
             pip --version
             pip3 --version
+            pip install keyring~=17.1.1
             az extension add --name azure-devops
             az extension show --name azure-devops
             az devops configure --defaults organization=https://dev.azure.com/kumari8700neha
