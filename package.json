@@ -10,7 +10,7 @@
   "devDependencies": {
     "artillery": "^1.6.0",
     "chai": "^4.2.0",
-    "forever": "^3.0.0",
+    "forever": "^3.0.4",
     "mocha": "^8.0.1",
     "nyc": "^15.1.0",
     "request": "^2.88.2"
